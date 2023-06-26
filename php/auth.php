@@ -16,9 +16,10 @@ if (empty($email_cliente) || empty($senha_cliente)) {
     $total_clientes = mysqli_num_rows($resultado_busca);
     if ($total_clientes == 1) {
         $row = mysqli_fetch_assoc($resultado_busca);
-        $senha_db = $row['senha'];
-        if (password_verify($senha_cliente, $senha_db)) {
-            
+        $senha_db = $row['senha']; // pegando a senha do DB
+        if (password_verify($senha_cliente, $senha_db)) {  //comparando senha do usuario com a senha do banco de dados com hash 
+            $_SESSION['email'] = $email_cliente;
+            $_SESSION['senha'] = $senha_cliente;
             header("Location: ../index.php");
         } else {
             $_SESSION['msg'] = "<div class='alert alert-danger'> Email ou senha incorretas ou não cadastradas ! </div>";
