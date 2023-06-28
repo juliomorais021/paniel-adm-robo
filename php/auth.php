@@ -2,7 +2,7 @@
 session_start();
 require_once('conn.php');
 $email_cliente = addslashes($_POST['email']);
-$senha_cliente = addslashes($_POST['senha']);
+$senha_cliente = addslashes($_POST['senha']); //comentario 
 // verificar se os campos estão nulos
 if (empty($email_cliente) || empty($senha_cliente)) {
     $_SESSION['msg'] = "<div class='alert alert-danger'> por favor, preencha os campos obrigatórios. </div>";
