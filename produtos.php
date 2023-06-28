@@ -1,4 +1,12 @@
 <?php
+session_start();
+//verificar se o usuario está logado na sessao caso não esteja redirecionar para a pagina de login navamente.
+if($_SESSION['email'] == True){
+
+}else{
+  $_SESSION['msg'] = "<div class='shadow p-3 mb-5 bg-body-tertiary rounded'><div class='alert alert-danger'> Você não está logado ou não tem permissão ! </div></div>";
+  header("Location: ./login.php");
+}
 
 $adm = 0;
 

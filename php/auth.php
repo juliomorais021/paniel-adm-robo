@@ -18,8 +18,8 @@ if (empty($email_cliente) || empty($senha_cliente)) {
         $row = mysqli_fetch_assoc($resultado_busca);
         $senha_db = $row['senha']; // pegando a senha do DB
         if (password_verify($senha_cliente, $senha_db)) {  //comparando senha do usuario com a senha do banco de dados com hash 
-            $_SESSION['email'] = $email_cliente;
-            $_SESSION['senha'] = $senha_cliente;
+            $_SESSION['email'] = $email_cliente;  //armazenando o email  na variavel session.
+            $_SESSION['senha'] = $senha_cliente;  //armazenando a senha da variavel session.
             header("Location: ../index.php");
         } else {
             $_SESSION['msg'] = "<div class='alert alert-danger'> Email ou senha incorretas ou não cadastradas ! </div>";
