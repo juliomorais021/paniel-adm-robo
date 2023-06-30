@@ -41,6 +41,8 @@ $adm = 0;
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <link rel="stylesheet" href="css/ie.css">
     <![endif]-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <script src="js/responsive-nav.js"></script>
 </head>
 
@@ -121,6 +123,16 @@ $adm = 0;
 
     <body>
       <form method="post" action="php/change_password.php" onsubmit="return verificaSenhas()">
+        <?php
+        if (isset($_SESSION['msg'])) {
+          echo $_SESSION['msg'];
+          unset($_SESSION['msg']);
+        }
+        if (isset($_SESSION['msgcad'])) {
+          echo $_SESSION['msgcad'];
+          unset($_SESSION['msgcad']);
+        }
+        ?>
         <h1>Adicionar nova senha</h1>
         <label for="senha">Nova senha:</label>
         <input type="password" id="senha" name="senha" required>
@@ -168,3 +180,5 @@ $adm = 0;
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

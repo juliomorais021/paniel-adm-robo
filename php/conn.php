@@ -6,8 +6,8 @@ $banco = 'bot';
 $conn = mysqli_connect($servidor,$usuario,$senha,$banco);
 
 if(!$conn){
-    echo "deu ruim !";
+   //echo "deu ruim !";
   } else{
-   echo "deu certo !";
+  // echo "deu certo !";
   }
 ?>
