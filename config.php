@@ -15,10 +15,10 @@ if ($_SESSION['email'] == True) {
     $tipo_cliente = $dados_user['tipo'];
     #### formas de pagamento 
     $dinheiro_cliente = $dados_user['dinheiro'];
-    $pix_cliente = $dados_user['dinheiro'];
-    $cartao_cliente = $dados_user['dinheiro'];
-    $caderneta_cliente = $dados_user['dinheiro'];
-    
+    $pix_cliente = $dados_user['pix'];
+    $cartao_cliente = $dados_user['cartao'];
+    $caderneta_cliente = $dados_user['caderneta'];
+
   }
 
 
@@ -147,16 +147,35 @@ $adm = 0;
         <input type="submit" value="Adicionar senha">
       </form>
       <br>
-      <form method="post" action="/php/payment.php">
+      <form method="post" action="php/payment.php">
+        <?php
+        if (isset($_SESSION['msg_pay'])) {
+          echo $_SESSION['msg_pay'];
+          unset($_SESSION['msg_pay']);
+        }
+        if (isset($_SESSION['msgcad'])) {
+          echo $_SESSION['msgcad'];
+          unset($_SESSION['msgcad']);
+        }
+
+        ?>
         <h2>Formas de pagamento</h2>
         <p>Selecione as opções de pagamento disponíveis:</p>
-        <input type="checkbox" id="dinheiro" name="dinheiro" <?php if($dinheiro_cliente == True){ echo 'checked';} ?> > 
+        <input type="checkbox" id="dinheiro" name="dinheiro" <?php if ($dinheiro_cliente == 1) {
+          echo 'checked';
+        } ?>>
         <label for="dinheiro">Dinheiro</label><br>
-        <input type="checkbox" id="pix" name="pix" <?php if($pix_cliente == True){ echo 'checked';} ?>>
+        <input type="checkbox" id="pix" name="pix" <?php if ($pix_cliente == 1) {
+          echo 'checked';
+        } ?>>
         <label for="pix">PIX</label><br>
-        <input type="checkbox" id="cartao" name="cartao" <?php if($cartao_cliente == True){ echo 'checked';} ?>>
+        <input type="checkbox" id="cartao" name="cartao" <?php if ($cartao_cliente == 1) {
+          echo 'checked';
+        } ?>>
         <label for="cartao">Cartão</label><br>
-        <input type="checkbox" id="caderneta" name="caderneta" <?php if($caderneta_cliente == True){ echo 'checked';} ?>>
+        <input type="checkbox" id="caderneta" name="caderneta" <?php if ($caderneta_cliente == 1) {
+          echo 'checked';
+        } ?>>
         <label for="caderneta">Caderneta</label><br>
         <br>
         <input type="submit" value="Salvar">
