@@ -13,6 +13,12 @@ if ($_SESSION['email'] == True) {
     $senha_cliente = $dados_user['senha'];
     $nome_cliente = $dados_user['nome'];
     $tipo_cliente = $dados_user['tipo'];
+    #### formas de pagamento 
+    $dinheiro_cliente = $dados_user['dinheiro'];
+    $pix_cliente = $dados_user['dinheiro'];
+    $cartao_cliente = $dados_user['dinheiro'];
+    $caderneta_cliente = $dados_user['dinheiro'];
+    
   }
 
 
@@ -141,16 +147,16 @@ $adm = 0;
         <input type="submit" value="Adicionar senha">
       </form>
       <br>
-      <form method="post" action="">
+      <form method="post" action="/php/payment.php">
         <h2>Formas de pagamento</h2>
         <p>Selecione as opções de pagamento disponíveis:</p>
-        <input type="checkbox" id="dinheiro" name="dinheiro" checked>
+        <input type="checkbox" id="dinheiro" name="dinheiro" <?php if($dinheiro_cliente == True){ echo 'checked';} ?> > 
         <label for="dinheiro">Dinheiro</label><br>
-        <input type="checkbox" id="pix" name="pix" checked>
+        <input type="checkbox" id="pix" name="pix" <?php if($pix_cliente == True){ echo 'checked';} ?>>
         <label for="pix">PIX</label><br>
-        <input type="checkbox" id="cartao" name="cartao" checked>
+        <input type="checkbox" id="cartao" name="cartao" <?php if($cartao_cliente == True){ echo 'checked';} ?>>
         <label for="cartao">Cartão</label><br>
-        <input type="checkbox" id="caderneta" name="caderneta" checked>
+        <input type="checkbox" id="caderneta" name="caderneta" <?php if($caderneta_cliente == True){ echo 'checked';} ?>>
         <label for="caderneta">Caderneta</label><br>
         <br>
         <input type="submit" value="Salvar">
