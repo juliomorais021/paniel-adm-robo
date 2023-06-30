@@ -43,7 +43,7 @@ $cartao_Option = isset($_POST['cartao']);
 $caderneta_Option = isset($_POST['caderneta']);
 
 
-$sql = "UPDATE login SET dinheiro = '$dinheiro_Option' , pix = '$pix_Option' , cartao = '$cartao_Option' , caderneta = '$caderneta_Option' ";
+$sql = "UPDATE login SET dinheiro = '$dinheiro_Option' , pix = '$pix_Option' , cartao = '$cartao_Option' , caderneta = '$caderneta_Option' WHERE email = '$emails_cliente' ";
 $query = mysqli_query($conn, $sql);
 $_SESSION['msg_pay'] = "<div class='shadow p-3 mb-5 bg-body-tertiary rounded'><div class='alert alert-success'> Opções de pagamento alterada com sucesso ! </div></div>";
 header("Location: ../config.php");
