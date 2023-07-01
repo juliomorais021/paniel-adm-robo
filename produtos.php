@@ -32,7 +32,8 @@ $adm = 0;
   span {
     font-family: 'Poppins', sans-serif;
   }
-  th{
+
+  th {
     font-family: 'Poppins', sans-serif;
   }
 
@@ -123,7 +124,7 @@ $adm = 0;
 <body>
 
   <header>
-    <a href="index.php" class="logo" data-scroll>DELIVERY</a>
+    <a href="index.php" class="logo" data-scroll>DELIVER</a>
     <nav class="nav-collapse">
       <ul>
         <li class="menu-item "><a href="index.php" data-scroll>VENDAS</a></li>
@@ -200,19 +201,19 @@ $adm = 0;
           </tr>
         </thead>
         <tbody>
-        <?php
+          <?php
           $sql_table = "SELECT * FROM produtos  WHERE id_usuario = '$id_usuario' ";
           $resultado = mysqli_query($conn, $sql_table);
-          while($dados = mysqli_fetch_assoc($resultado)){
+          while ($dados = mysqli_fetch_assoc($resultado)) {
             echo "<tr>";
-             echo "<td>" .$dados['id_produtos']."</td>";
-             echo "<td>" .$dados['nome_produto']."</td>";
-             echo "<td>" .$dados['quantidade_produto']."</td>";
-             echo "<td>" .$dados['valor']."</td>";
+            echo "<td>" . $dados['id_produtos'] . "</td>";
+            echo "<td>" . $dados['nome_produto'] . "</td>";
+            echo "<td>" . $dados['quantidade_produto'] . "</td>";
+            echo "<td>" . $dados['valor'] . "</td>";
             echo "</tr>";
           }
-        
-        ?>
+
+          ?>
         </tbody>
       </table>
 

@@ -127,7 +127,7 @@ $adm = 0;
     </style>
     </head>
 
-    <body>
+    <body >
       <form method="post" action="php/change_password.php" onsubmit="return verificaSenhas()">
         <?php
         if (isset($_SESSION['msg'])) {
@@ -147,7 +147,7 @@ $adm = 0;
         <input type="submit" value="Adicionar senha">
       </form>
       <br>
-      <form method="post" action="php/payment.php">
+      <form class="" method="post" action="php/payment.php">
         <?php
         if (isset($_SESSION['msg_pay'])) {
           echo $_SESSION['msg_pay'];
