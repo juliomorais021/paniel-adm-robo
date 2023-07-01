@@ -9,6 +9,7 @@ if ($_SESSION['email'] == True) {
   $result = mysqli_num_rows($resultado_busca);
 
   while ($dados_user = mysqli_fetch_array($resultado_busca)) {
+    $id_usuario = $dados_user['id'];
     $email_cliente = $dados_user['email'];
     $senha_cliente = $dados_user['senha'];
     $nome_cliente = $dados_user['nome'];
@@ -131,7 +132,6 @@ $adm = 0;
   </header>
 
   <section class="d-flex justify-content-around ">
-
     <form method="post" action="php/cadastrar_produtos.php" class="">
       <?php
       if (isset($_SESSION['msg_produto'])) {
@@ -162,12 +162,27 @@ $adm = 0;
         <button class="btn btn-primary">Cadastrar</button>
       </div>
     </form>
+    <?php
+    // buscar produtos
+    $buscar_produtos = "SELECT * FROM produtos  WHERE id_usuario = '$id_usuario' ";
+    $resultado_busca_produtos = mysqli_query($conn, $buscar_produtos);
+    // listar produtos 
+    while ($dados_user_produtos = mysqli_fetch_array($resultado_busca_produtos)) {
+      $id_produto = $dados_user_produtos['id_produtos'];
+      $db_id_user = $dados_user_produtos['id_usuario'];
+      $nome_produto = $dados_user_produtos['nome_produto'];
+      $quantidade_produto = $dados_user_produtos['quantidade_produto'];
+      $valor = $dados_user_produtos['valor'];
+    }
+    ?>
 
-    <div>
-      Seus produtos
-    </div>
+   <div class="d-flex">
+   <h1 class="display-6 p-5 ">Seus produtos</h1>
+
+   </div>
 
   </section>
+  
 
 
 
