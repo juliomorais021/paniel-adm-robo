@@ -32,6 +32,9 @@ $adm = 0;
   span {
     font-family: 'Poppins', sans-serif;
   }
+  th{
+    font-family: 'Poppins', sans-serif;
+  }
 
   * {
     margin: 0;
@@ -51,6 +54,15 @@ $adm = 0;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     max-width: 500px;
     margin: 0 auto;
+  }
+
+  .backgound-div-table {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+
   }
 
   table {
@@ -176,13 +188,38 @@ $adm = 0;
     }
     ?>
 
-   <div class="d-flex">
-   <h1 class="display-6 p-5 ">Seus produtos</h1>
+    <div class="d-flex flex-column backgound-div-table">
+      <h1 class="display-6 p-5 ">Seus produtos</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id produto</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          $sql_table = "SELECT * FROM produtos  WHERE id_usuario = '$id_usuario' ";
+          $resultado = mysqli_query($conn, $sql_table);
+          while($dados = mysqli_fetch_assoc($resultado)){
+            echo "<tr>";
+             echo "<td>" .$dados['id_produtos']."</td>";
+             echo "<td>" .$dados['nome_produto']."</td>";
+             echo "<td>" .$dados['quantidade_produto']."</td>";
+             echo "<td>" .$dados['valor']."</td>";
+            echo "</tr>";
+          }
+        
+        ?>
+        </tbody>
+      </table>
 
-   </div>
+    </div>
 
   </section>
-  
+
 
 
 
