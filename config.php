@@ -86,6 +86,8 @@ $adm = 0;
       body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
+        display: flex;
+       
       }
 
       form {
@@ -128,6 +130,7 @@ $adm = 0;
     </head>
 
     <body >
+      <section class="d-flex justify-content-center"">
       <form method="post" action="php/change_password.php" onsubmit="return verificaSenhas()">
         <?php
         if (isset($_SESSION['msg'])) {
@@ -180,6 +183,7 @@ $adm = 0;
         <br>
         <input type="submit" value="Salvar">
       </form>
+      </section>
     </body>
 
 </html>
