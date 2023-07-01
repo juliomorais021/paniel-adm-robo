@@ -26,6 +26,12 @@ $adm = 0;
 ?>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+  span {
+    font-family: 'Poppins', sans-serif;
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -92,6 +98,8 @@ $adm = 0;
   <meta name="author" content="Adtile">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <link rel="stylesheet" href="css/ie.css">
@@ -122,48 +130,54 @@ $adm = 0;
     </nav>
   </header>
 
-  <section id="home">
+  <section class="d-flex justify-content-around ">
 
-    <body>
-      <div align='center'>
-        <form id="form1" name="form1" method="post" action="">
-          <table>
-            <tr>
-              <th>Produtos</th>
-              <th>Valores</th>
-            </tr>
-            <tr>
-              <td>Botijão Gás</td>
-              <td><br>
-                <input type="number" name="gas" id="gas" step="0.01" min="0.00" max="9999.99" lang="pt-BR"
-                  style="text-align: right; direction: rtl;" />
+    <form method="post" action="php/cadastrar_produtos.php" class="">
+      <?php
+      if (isset($_SESSION['msg_produto'])) {
+        echo $_SESSION['msg_produto'];
+        unset($_SESSION['msg_produto']);
+      }
+      if (isset($_SESSION['msg_produto'])) {
+        echo $_SESSION['msg_produto'];
+        unset($_SESSION['msg_produto']);
+      }
+      ?>
+      <h1 class="display-6 p-5 ">Cadastrar Produtos</h1>
+      <div class="d-flex flex-column p-3 gap-2 ">
+        <i class="fa-solid fa-box" style="color: #6f6d6d;"></i>
+        <span class="">Nome produto</span>
+        <input type="text" name="nome_produto">
+        <i class="fa-solid fa-boxes-stacked" style="color: #6f6d6d;"></i>
+        <span>Quantidade </span>
+        <input type="text" name="quantidade_produto">
+        <i class="fa-solid fa-hand-holding-dollar" style="color: #6f6d6d;"></i>
+        <span>Valor</span>
+        <input type="text" name="valor_produto">
+        <div class=" d-flex gap-2 flex-column mb-3 ">
+          <i class="fa-regular fa-image" style="color: #6f6d6d;"></i>
+          <span>Imagem do produto</span>
+          <input class="form-control" type="file" id="formFile">
+        </div>
+        <button class="btn btn-primary">Cadastrar</button>
+      </div>
+    </form>
 
-              </td>
-            </tr>
-            <tr>
-              <td>Galão de Água</td>
-              <td><br>
-                <input type="number" name="agua" id="agua" step="0.01" min="0.00" max="9999.99" lang="pt-BR"
-                  style="text-align: right; direction: rtl;" />
-
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <input type="submit" name="button" id="button" value="Salvar" />
-              </td>
-            </tr>
-          </table>
-        </form>
-    </body>
+    <div>
+      Seus produtos
     </div>
+
   </section>
 
 
 
   <script src="js/fastclick.js"></script>
   <script src="js/scroll.js"></script>
+  <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
   <script src="js/fixed-responsive-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
