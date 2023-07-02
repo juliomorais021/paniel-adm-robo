@@ -124,7 +124,7 @@ $adm = 0;
 <body>
 
   <header>
-    <a href="index.php" class="logo" data-scroll>DELIVER</a>
+    <a href="index.php" class="logo" data-scroll>PAINEL ADM</a>
     <nav class="nav-collapse">
       <ul>
         <li class="menu-item "><a href="index.php" data-scroll>VENDAS</a></li>
@@ -198,18 +198,25 @@ $adm = 0;
             <th scope="col">Nome</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Preço</th>
+            <th scope="col">....</th>
           </tr>
         </thead>
         <tbody>
           <?php
           $sql_table = "SELECT * FROM produtos  WHERE id_usuario = '$id_usuario' ";
           $resultado = mysqli_query($conn, $sql_table);
-          while ($dados = mysqli_fetch_assoc($resultado)) {
+          while ($dados = mysqli_fetch_assoc($resultado)) { // usando o while para renderizar em tempo real os dados da tabela.
             echo "<tr>";
             echo "<td>" . $dados['id_produtos'] . "</td>";
             echo "<td>" . $dados['nome_produto'] . "</td>";
             echo "<td>" . $dados['quantidade_produto'] . "</td>";
             echo "<td>" . $dados['valor'] . "</td>";
+            //colocando para renderizar o icone de delete.
+            echo "<td> 
+            <a class='btn btn-sm btn-danger' href='./php/delete.php?id=$dados[id_produtos]'> 
+            <i class='fa-solid fa-trash-can'></i> 
+            </a>
+            </td>";
             echo "</tr>";
           }
 

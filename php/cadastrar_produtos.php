@@ -42,11 +42,12 @@ $nome_produto = addslashes($_POST['nome_produto']);
 $quantidade_produto = addslashes($_POST['quantidade_produto']);
 $valor_produto = addslashes($_POST['valor_produto']);
 
-if (empty($nome_produto) || empty($quantidade_produto) || empty($valor_produto)) {
+if (empty($nome_produto) || empty($quantidade_produto) || empty($valor_produto)) {  //verifianco de os campos estão vazios e redirecionando !
     $_SESSION['msg_produto'] = "<div class='shadow p-3 mb-5 bg-body-tertiary rounded'><div class='alert alert-danger'> Não deixe os campos vazios ! </div></div>";
     header("Location: ../produtos.php");
 
 } else {
+    //fazendo uma query no DB para cadastrar novos produtos.
     $sql = "INSERT INTO produtos (id_usuario,nome_produto,quantidade_produto,valor) VALUES ('$id_usuario','$nome_produto','$quantidade_produto','R$: $valor_produto')";
     $query = mysqli_query($conn, $sql);
     $_SESSION['msg_produto'] = "<div class='shadow p-3 mb-5 bg-body-tertiary rounded'><div class='alert alert-success'> Produto cadastrado com sucesso ! </div></div>";
