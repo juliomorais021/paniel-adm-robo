@@ -2,19 +2,19 @@
 session_start();
 require_once('./php/conn.php');
 // buscando o tipo de usuario no bando de dados !
-if ($_SESSION['email'] == True) {   
+if ($_SESSION['email'] == True) {
   $emails_cliente = $_SESSION['email'];
   $buscar_email = "SELECT * FROM login WHERE email = '$emails_cliente'";
   $resultado_busca = mysqli_query($conn, $buscar_email);
   $result = mysqli_num_rows($resultado_busca);
-// fazendo  uma busca e retornando o tipo do usuario e outras informações para restringir a pagina de adm.
-  while ($dados_user = mysqli_fetch_array($resultado_busca)) { 
+  // fazendo  uma busca e retornando o tipo do usuario e outras informações para restringir a pagina de adm.
+  while ($dados_user = mysqli_fetch_array($resultado_busca)) {
     $email_cliente = $dados_user['email'];
     $senha_cliente = $dados_user['senha'];
     $nome_cliente = $dados_user['nome'];
     $tipo_cliente = $dados_user['tipo'];
 
-    if($tipo_cliente == 1){
+    if ($tipo_cliente == 1) {
       header("Location: index.php"); // caso caso o usuario não seja adm e force entra na adm sera redirecinado !
     }
   }
@@ -34,13 +34,13 @@ $adm = 0;
 
 <head>
 
-  <title>DELIVERY</title>
+  <title>PAINEL ADMINISTRATIVO</title>
   <meta charset="utf-8">
-
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   <meta name="author" content="Adtile">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navstyle.css">
 
   <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -50,7 +50,7 @@ $adm = 0;
 </head>
 
 <body>
-
+  <!--- 
   <header>
     <a href="index.php" class="logo" data-scroll>DELIVERY</a>
     <nav class="nav-collapse">
@@ -65,6 +65,72 @@ $adm = 0;
       </ul>
     </nav>
   </header>
+  --->
+
+  <nav class="navbar navbar-dark  fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">PAINEL ADM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link " href="index.php">VENDAS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+             <i class="fa-solid fa-box"></i>
+              <a class="nav-link" href="produtos.php">PRODUTOS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-regular fa-clipboard"></i>
+              <a class="nav-link" href="pedidos.php">PEDIDOS</a>
+            </li>
+            <?php
+            if ($tipo_cliente == 2) {
+              ?>
+            <li class="nav-item">
+              <a class="nav-link active" href="admin.php">ADM</a>
+            </li>
+            <?php
+            }
+            ?>
+
+            <li class="nav-item">
+              <a class="nav-link" href="config.php">CONFIGURAÇÕES</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex mt-3" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
 
   <section id="home">
     <style>
@@ -196,6 +262,9 @@ $adm = 0;
 <script src="js/fastclick.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/fixed-responsive-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
