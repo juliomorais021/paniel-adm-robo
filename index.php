@@ -65,7 +65,7 @@ $adm = 0;
     </nav>
   </header>
   --->
-  <nav class="navbar navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-dark  fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">PAINEL ADM</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
@@ -81,52 +81,43 @@ $adm = 0;
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-solid fa-cart-shopping"></i>
               <a class="nav-link active" href="index.php">VENDAS</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-box"></i>
               <a class="nav-link" href="produtos.php">PRODUTOS</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-regular fa-clipboard"></i>
               <a class="nav-link" href="pedidos.php">PEDIDOS</a>
             </li>
             <?php
             if ($tipo_cliente == 2) {
               ?>
-            <li class="nav-item">
-              <a class="nav-link" href="admin.php">ADM</a>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-user"></i>
+              <a class="nav-link " href="admin.php">ADM</a>
             </li>
             <?php
             }
             ?>
 
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-gear"></i>
               <a class="nav-link" href="config.php">CONFIGURAÇÕES</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <a class="nav-link" href="sair.php">SAIR</a>
             </li>
-          </ul>
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
+
+            </form>
         </div>
       </div>
     </div>
   </nav>
-
 
 
   <section id="home">
@@ -211,6 +202,7 @@ $adm = 0;
 <script src="js/fastclick.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/fixed-responsive-nav.js"></script>
+<script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>

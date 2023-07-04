@@ -53,7 +53,7 @@ $adm = 0;
 </head>
 
 <body>
-
+  <!---
   <header>
     <a href="index.php" class="logo" data-scroll>DELIVERY</a>
     <nav class="nav-collapse">
@@ -74,6 +74,61 @@ $adm = 0;
       </ul>
     </nav>
   </header>
+  --->
+  <nav class="navbar navbar-dark  fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">PAINEL ADM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <a class="nav-link " href="index.php">VENDAS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-box"></i>
+              <a class="nav-link" href="produtos.php">PRODUTOS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-regular fa-clipboard"></i>
+              <a class="nav-link" href="pedidos.php">PEDIDOS</a>
+            </li>
+            <?php
+            if ($tipo_cliente == 2) {
+              ?>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-user"></i>
+              <a class="nav-link " href="admin.php">ADM</a>
+            </li>
+            <?php
+            }
+            ?>
+
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-gear"></i>
+              <a class="nav-link active" href="config.php">CONFIGURAÇÕES</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <a class="nav-link" href="sair.php">SAIR</a>
+            </li>
+
+            </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
 
   <section id="home">
     <style>
@@ -87,7 +142,7 @@ $adm = 0;
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
         display: flex;
-       
+
       }
 
       form {
@@ -129,9 +184,9 @@ $adm = 0;
     </style>
     </head>
 
-    <body >
+    <body>
       <section class="d-flex justify-content-center"">
-      <form method="post" action="php/change_password.php" onsubmit="return verificaSenhas()">
+      <form method=" post" action="php/change_password.php" onsubmit="return verificaSenhas()">
         <?php
         if (isset($_SESSION['msg'])) {
           echo $_SESSION['msg'];
@@ -148,41 +203,41 @@ $adm = 0;
         <label for="confirmar_senha">Confirmar senha:</label>
         <input type="password" id="confirmar_senha" name="confirmar_senha" required>
         <input type="submit" value="Adicionar senha">
-      </form>
-      <br>
-      <form class="" method="post" action="php/payment.php">
-        <?php
-        if (isset($_SESSION['msg_pay'])) {
-          echo $_SESSION['msg_pay'];
-          unset($_SESSION['msg_pay']);
-        }
-        if (isset($_SESSION['msgcad'])) {
-          echo $_SESSION['msgcad'];
-          unset($_SESSION['msgcad']);
-        }
-
-        ?>
-        <h2>Formas de pagamento</h2>
-        <p>Selecione as opções de pagamento disponíveis:</p>
-        <input type="checkbox" id="dinheiro" name="dinheiro" <?php if ($dinheiro_cliente == 1) {
-          echo 'checked';
-        } ?>>
-        <label for="dinheiro">Dinheiro</label><br>
-        <input type="checkbox" id="pix" name="pix" <?php if ($pix_cliente == 1) {
-          echo 'checked';
-        } ?>>
-        <label for="pix">PIX</label><br>
-        <input type="checkbox" id="cartao" name="cartao" <?php if ($cartao_cliente == 1) {
-          echo 'checked';
-        } ?>>
-        <label for="cartao">Cartão</label><br>
-        <input type="checkbox" id="caderneta" name="caderneta" <?php if ($caderneta_cliente == 1) {
-          echo 'checked';
-        } ?>>
-        <label for="caderneta">Caderneta</label><br>
+        </form>
         <br>
-        <input type="submit" value="Salvar">
-      </form>
+        <form class="" method="post" action="php/payment.php">
+          <?php
+          if (isset($_SESSION['msg_pay'])) {
+            echo $_SESSION['msg_pay'];
+            unset($_SESSION['msg_pay']);
+          }
+          if (isset($_SESSION['msgcad'])) {
+            echo $_SESSION['msgcad'];
+            unset($_SESSION['msgcad']);
+          }
+
+          ?>
+          <h2>Formas de pagamento</h2>
+          <p>Selecione as opções de pagamento disponíveis:</p>
+          <input type="checkbox" id="dinheiro" name="dinheiro" <?php if ($dinheiro_cliente == 1) {
+            echo 'checked';
+          } ?>>
+          <label for="dinheiro">Dinheiro</label><br>
+          <input type="checkbox" id="pix" name="pix" <?php if ($pix_cliente == 1) {
+            echo 'checked';
+          } ?>>
+          <label for="pix">PIX</label><br>
+          <input type="checkbox" id="cartao" name="cartao" <?php if ($cartao_cliente == 1) {
+            echo 'checked';
+          } ?>>
+          <label for="cartao">Cartão</label><br>
+          <input type="checkbox" id="caderneta" name="caderneta" <?php if ($caderneta_cliente == 1) {
+            echo 'checked';
+          } ?>>
+          <label for="caderneta">Caderneta</label><br>
+          <br>
+          <input type="submit" value="Salvar">
+        </form>
       </section>
     </body>
 
@@ -206,6 +261,8 @@ $adm = 0;
 <script src="js/fastclick.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/fixed-responsive-nav.js"></script>
+<script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

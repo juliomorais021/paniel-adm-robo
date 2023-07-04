@@ -122,7 +122,7 @@ $adm = 0;
 </head>
 
 <body>
-
+  <!--
   <header>
     <a href="index.php" class="logo" data-scroll>PAINEL ADM</a>
     <nav class="nav-collapse">
@@ -143,6 +143,62 @@ $adm = 0;
       </ul>
     </nav>
   </header>
+  --->
+  <nav class="navbar navbar-dark  fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">PAINEL ADM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
+        aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+        aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <a class="nav-link " href="index.php">VENDAS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-box"></i>
+              <a class="nav-link active" href="produtos.php">PRODUTOS</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2 ">
+              <i class="fa-regular fa-clipboard"></i>
+              <a class="nav-link" href="pedidos.php">PEDIDOS</a>
+            </li>
+            <?php
+            if ($tipo_cliente == 2) {
+              ?>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-user"></i>
+              <a class="nav-link " href="admin.php">ADM</a>
+            </li>
+            <?php
+            }
+            ?>
+
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-gear"></i>
+              <a class="nav-link" href="config.php">CONFIGURAÇÕES</a>
+            </li>
+            <li class="nav-item d-flex align-items-center gap-2">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              <a class="nav-link" href="sair.php">SAIR</a>
+            </li>
+
+            </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
 
   <section class="d-flex justify-content-around ">
     <form method="post" action="php/cadastrar_produtos.php" class="">
@@ -233,6 +289,7 @@ $adm = 0;
 
   <script src="js/fastclick.js"></script>
   <script src="js/scroll.js"></script>
+  <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
   <script src="js/fixed-responsive-nav.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
