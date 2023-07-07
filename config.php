@@ -186,7 +186,7 @@ $adm = 0;
 
     <body>
       <section class="d-flex justify-content-center"">
-      <form method=" post" action="php/change_password.php" onsubmit="return verificaSenhas()">
+      <form method="post" action="php/change_password.php" onsubmit="return verificaSenhas()">
         <?php
         if (isset($_SESSION['msg'])) {
           echo $_SESSION['msg'];

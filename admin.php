@@ -9,6 +9,7 @@ if ($_SESSION['email'] == True) {
   $result = mysqli_num_rows($resultado_busca);
   // fazendo  uma busca e retornando o tipo do usuario e outras informações para restringir a pagina de adm.
   while ($dados_user = mysqli_fetch_array($resultado_busca)) {
+    $id_user = $dados_user['id'];
     $email_cliente = $dados_user['email'];
     $senha_cliente = $dados_user['senha'];
     $nome_cliente = $dados_user['nome'];
@@ -49,7 +50,7 @@ $adm = 0;
   <script src="js/responsive-nav.js"></script>
 </head>
 
-<body class="d-flex flex-row justify-content-around align-items-center  flex-lg-row flex-sm-column ">
+<body class=" d-flex justify-content-around align-content-center flex-wrap flex-lg-row flex-sm-column ">
   <!--- 
   <header>
     <a href="index.php" class="logo" data-scroll>DELIVERY</a>
@@ -124,6 +125,7 @@ $adm = 0;
 
   <section id="home">
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
       * {
         margin: 0;
         padding: 0;
@@ -133,14 +135,17 @@ $adm = 0;
       body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
+
       }
 
       form {
+        font-family: 'Poppins', sans-serif;
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-        max-width: 500px;
+        max-width: 400px;
+
         margin: 0 auto;
       }
 
@@ -182,8 +187,8 @@ $adm = 0;
 
       body {
         font-family: sans-serif;
-        border: solid 1px green;
-        height: 100vh;
+        min-height: 100vh;
+        margin-top: 80px;
       }
 
       .container {
@@ -200,37 +205,64 @@ $adm = 0;
     </style>
     </head>
 
-    <div class="d-flex  gap-5 ">
-      <form method="post" action="">
-        <h1>Buscar Usuário</h1>
-        <input type="radio" id="opcao_nome" name="opcao_busca" value="nome" checked>
+    <div class="d-flex justify-content-around align-content-center mb-3 flex-wrap  gap-5 ">
+
+      <form class="d-flex flex-column gap-2s " method="post" action="">
+        <h2>Buscar Usuário</h2>
         <label for="opcao_nome">Buscar por nome:</label>
         <input type="text" id="nome_usuario" name="nome_usuario">
-        <br>
-        <input type="radio" id="opcao_todos" name="opcao_busca" value="todos">
-        <label for="opcao_todos">Listar todos:</label>
-        <br>
+        <input  name="id_usuario" type="hidden" value="<?php echo "$id_user";?>" >
         <input type="submit" value="Buscar">
       </form>
       <br>
+      <?php
+      error_reporting(0);
+      $nome_do_usuario = $_POST['nome_usuario'];
+      ?>
+      <?php
+      $buscar_user = "SELECT * FROM login WHERE nome LIKE '%$nome_do_usuario%'";
+      $resultado_busca_user = mysqli_query($conn, $buscar_user);
+      $result_user = mysqli_num_rows($resultado_busca_user);
 
+      while ($list_user = mysqli_fetch_array($resultado_busca_user)) {
+        $id_user = $list_user['id'];
+        $name_user = $list_user['nome'];
+        $email_user = $list_user['email'];
+        $status_user = $list_user['status'];
 
+        ?>
 
 
       <!-- Formulário de habilitar e desabilitar -->
-      <form method="post" action="">
-        <h2>Usuário encontrado:</h2>
-        <p>Nome: Fulano de Tal</p>
-        <p>Email: fulano@example.com</p>
-        <p>Status: Ativo</p>
-        <label>
-          <input type="radio" name="status" value="ativo" checked> Ativar
-        </label>
-        <label>
-          <input type="radio" name="status" value="inativo"> Desativar
-        </label>
-        <input type="submit" value="Salvar">
-      </form>
+
+        <form class="d-flex flex-column gap-1" method="post" action="php/statuscheck.php">
+          <h2>Usuário encontrado:</h2>
+          <p>Nome:
+            <?php echo $name_user; ?>
+          </p>
+          <p>Email:
+            <?php echo $email_user; ?>
+          </p>
+          <input  name="id_usuario" type="hidden" value="<?php echo "$id_user";?>" >
+          <p>Status:
+            <?php ?>
+          </p>
+          <label>
+            <input type="radio" name="status" value="ativo" <?php if($status_user == 'ativo'){ echo 'checked'; } ?> > Ativar
+          </label>
+          <label>
+            <input type="radio" name="status" value="inativo"<?php if($status_user == 'inativo'){ echo 'checked'; } ?>  > Desativar
+          </label>
+          <input type="submit" value="Salvar">
+        </form>
+
+        <?php
+      }
+
+
+
+      ?>
+
     </div>
 
 

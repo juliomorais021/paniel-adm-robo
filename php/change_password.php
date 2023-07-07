@@ -7,7 +7,8 @@ $options = [
     'cost' => 10,
 ];
 
-if(empty($new_senha_cliente) || empty($new_senha_cliente)){
+
+if(empty($new_senha_cliente)){
     $_SESSION['msg'] = "<div class='shadow p-3 mb-5 bg-body-tertiary rounded'><div class='alert alert-danger'> Não deixe os campos vazios ! </div></div>";  //verificação dos campos se não estão vazios !
     header("Location: ../config.php");
 }else{
