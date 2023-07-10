@@ -10,12 +10,41 @@
  *
  * ============================================= */
 
-body, div,
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, dl, dt, dd, ol, ul, li, hr,
-fieldset, form, label, legend, th, td,
-article, aside, figure, footer, header, hgroup, menu, nav, section,
-summary, hgroup {
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+hr,
+fieldset,
+form,
+label,
+legend,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+hgroup {
   margin: 0;
   padding: 0;
   border: 0;
@@ -26,17 +55,26 @@ a:hover {
   outline: 0;
 }
 
-@-webkit-viewport { width: device-width; }
-@-moz-viewport { width: device-width; }
-@-ms-viewport { width: device-width; }
-@-o-viewport { width: device-width; }
-@viewport { width: device-width; }
-
+@-webkit-viewport {
+  width: device-width;
+}
+@-moz-viewport {
+  width: device-width;
+}
+@-ms-viewport {
+  width: device-width;
+}
+@-o-viewport {
+  width: device-width;
+}
+@viewport {
+  width: device-width;
+}
 
 /* ------------------------------------------
   RESPONSIVE NAV STYLES
 --------------------------------------------- */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -51,7 +89,7 @@ body {
 /* Mobile first queries */
 @media (max-width: 600px) {
   .container {
-      width: 100%;
+    width: 100%;
   }
 }
 .nav-collapse ul {
@@ -85,7 +123,7 @@ body {
 }
 
 .nav-toggle {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -106,7 +144,6 @@ body {
   }
 }
 
-
 /* ------------------------------------------
   DEMO STYLES
 --------------------------------------------- */
@@ -117,6 +154,9 @@ body {
   text-size-adjust: 100%;
   color: #37302a;
   background: #fff;
+  margin-top: 50px;
+  min-height: 100vh;
+  border: solid 2px red;
   font: normal 100%/1.4 sans-serif;
 }
 
@@ -129,7 +169,7 @@ section {
 }
 
 h1 {
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 p {
@@ -137,19 +177,16 @@ p {
   margin: 0 auto;
 }
 
-
 /* ------------------------------------------
   MENU PARTE DA FRENTE 2
 --------------------------------------------- */
 
-nav{
+nav {
   background-color: #253a44;
-
-  
 }
 
 .logo {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-decoration: none;
   font-weight: bold;
   line-height: 55px;
@@ -157,7 +194,6 @@ nav{
   color: #fff;
   float: left;
 }
-
 
 /* ------------------------------------------
   MASK
@@ -167,7 +203,7 @@ nav{
   -webkit-transition: opacity 300ms;
   -moz-transition: opacity 300ms;
   transition: opacity 300ms;
-  background: rgba(0,0,0, .5);
+  background: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   position: fixed;
   opacity: 0;
@@ -194,7 +230,6 @@ nav{
     opacity: 0 !important;
   }
 }
-
 
 /* ------------------------------------------
   NAVIGATION STYLES
@@ -239,15 +274,14 @@ nav{
   }
 }
 
-
 /* ------------------------------------------
  MENUS
 --------------------------------------------- */
 .nav-collapse a {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   border-top: 1px solid white;
   text-decoration: none;
-  background:  #253a44;
+  background: #253a44;
   padding: 0.7em 1em;
   color: #fff;
   width: 100%;
@@ -283,15 +317,14 @@ BOTÃO ATIVO
   }
 }
 
-
 /* ------------------------------------------
   NAV TOGGLE STYLES
 --------------------------------------------- */
 
 @font-face {
   font-family: "responsivenav";
-  src:url("../icons/responsivenav.eot");
-  src:url("../icons/responsivenav.eot?#iefix") format("embedded-opentype"),
+  src: url("../icons/responsivenav.eot");
+  src: url("../icons/responsivenav.eot?#iefix") format("embedded-opentype"),
     url("../icons/responsivenav.ttf") format("truetype"),
     url("../icons/responsivenav.woff") format("woff"),
     url("../icons/responsivenav.svg#responsivenav") format("svg");
@@ -329,8 +362,3 @@ BOTÃO ATIVO
   font-size: 24px;
   content: "\78"; /* Close icon */
 }
-
-
-
-
-
