@@ -163,13 +163,14 @@ $adm = 0;
 
 
   <?php
-  $buscar_pedidos = "SELECT * FROM pedidos WHERE status_pedido = 'aguardando' AND email_painel = '$emails_cliente' ";
+  $buscar_pedidos = "SELECT * FROM pedidos WHERE sataus_pedido = 'aguardando' AND email__painel = '$emails_cliente' ";
   $resultado_pedidos = mysqli_query($conn, $buscar_pedidos);
   $result_pedidos = mysqli_num_rows($resultado_pedidos);
   while ($dados_pedido = mysqli_fetch_array($resultado_pedidos)) {
+    $id_pedido = $dados_pedido['id_pedidos'];
     $forma_pagamento = $dados_pedido['forma_pagamento'];
     $produto = $dados_pedido['produto'];
-    $quantidade = $dados_pedido['quantidade_produto'];
+    // $quantidade = $dados_pedido['quantidade_produto'];
     $cliente = $dados_pedido['nome_cliente'];
     $endereco = $dados_pedido['endereco'];
     $pagamento = $dados_pedido['forma_pagamento'];
@@ -177,36 +178,43 @@ $adm = 0;
 
 
     ?>
-    <div class="card" style="width: 18rem;">
-      <img
-        src="https://copias.supermidiapf.com.br/wp-content/uploads/sites/4/bloco-de-pedidos-passo-fundo-super-copias-grafica-digital/Bloco-de-Pedidos-Gr%C3%A1fica-Digital-Passo-Fundo-Super-C%C3%B3pias-300x225-2.png"
-        class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Novo Pedido !</h5>
-        <h5 class="card-title">Pedido:</h5>
-        <p class="card-text">
-          <?php echo $produto; ?>
-        </p>
+    <form method="post" action="">
+      <div class="card" style="width: 18rem;">
+        <img
+          src="https://copias.supermidiapf.com.br/wp-content/uploads/sites/4/bloco-de-pedidos-passo-fundo-super-copias-grafica-digital/Bloco-de-Pedidos-Gr%C3%A1fica-Digital-Passo-Fundo-Super-C%C3%B3pias-300x225-2.png"
+          class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Novo Pedido !</h5>
+          <h5 class="card-title">Pedido:</h5>
+          <p class="card-text">
+            <?php echo $produto; ?>
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cliente:
+            <?php echo $cliente; ?>
+          </li>
+          <li class="list-group-item">Endereço:
+            <?php echo $endereco; ?>
+          </li>
+          <li class="list-group-item">Pagamento:
+            <?php echo $pagamento; ?>
+          </li>
+          <li class="list-group-item">Telefone:
+            <?php echo $telefone; ?>
+          </li>
+        </ul>
+        <div class="card-body ">
+          <form method="post" action="">
+            <input type="hidden" name="id" value="<?php echo $id_pedido;?>">
+            <button name="aceitar" class="btn btn-success"  value="aceitar"" formaction="php/aceitar.php">Aceitar
+              </but<button>
+              <button name="recusar" class="btn btn-danger" value="recusar" formaction="php/recusar.php">Recusar</button>
+          </form>
+
+        </div>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cliente:
-          <?php echo $cliente; ?>
-        </li>
-        <li class="list-group-item">Endereço:
-          <?php echo $endereco; ?>
-        </li>
-        <li class="list-group-item">Pagamento:
-          <?php echo $pagamento; ?>
-        </li>
-        <li class="list-group-item">Telefone:
-          <?php echo $telefone; ?>
-        </li>
-      </ul>
-      <div class="card-body ">
-        <button type="button" class="btn btn-success">Aceitar</but<button>
-          <button type="button" class="btn btn-danger">Recusar</button>
-      </div>
-    </div>
+    </form>
 
 
     <!--
