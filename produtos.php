@@ -37,15 +37,18 @@ $adm = 0;
     font-family: 'Poppins', sans-serif;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+ 
+  nav {
+    background-color: #253a44;
   }
+
 
   body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
+    min-height: 100vh;
+    margin-top: 80px;
+    font-family: 'Poppins', sans-serif;
   }
 
   form {
@@ -54,7 +57,7 @@ $adm = 0;
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     max-width: 500px;
-    margin: 0 auto;
+    
   }
 
   .backgound-div-table {
@@ -111,39 +114,12 @@ $adm = 0;
   <title>DELIVERY</title>
   <meta name="author" content="Adtile">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <link rel="stylesheet" href="css/ie.css">
-    <![endif]-->
-  <script src="js/responsive-nav.js"></script>
 </head>
 
-<body>
-  <!--
-  <header>
-    <a href="index.php" class="logo" data-scroll>PAINEL ADM</a>
-    <nav class="nav-collapse">
-      <ul>
-        <li class="menu-item "><a href="index.php" data-scroll>VENDAS</a></li>
-        <li class="menu-item active"><a href="produtos.php" data-scroll>PRODUTOS</a></li>
-        <li class="menu-item"><a href="pedidos.php" data-scroll>PEDIDOS</a></li>
-        <li class="menu-item"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>
-        <?php
-        if ($tipo_cliente == 2) {
-          ?>
-          <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>
-          <?php
-        }
-        ?>
-        <li class="menu-item"><a href="sair.php" data-scroll>SAIR</a></li>
+<body class="d-flex  align-items-center justify-content-around gap-4 " >
 
-      </ul>
-    </nav>
-  </header>
-  --->
   <nav class="navbar navbar-dark  fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">PAINEL ADM</a>
@@ -200,7 +176,8 @@ $adm = 0;
 
 
 
-  <section class="d-flex justify-content-around ">
+  <section class="d-flex    gap-5  ">
+    <div class="d-flex">
     <form method="post" action="php/cadastrar_produtos.php" class="">
       <?php
       if (isset($_SESSION['msg_produto'])) {
@@ -231,6 +208,7 @@ $adm = 0;
         <button class="btn btn-primary">Cadastrar</button>
       </div>
     </form>
+    </div>
     <?php
     // buscar produtos
     $buscar_produtos = "SELECT * FROM produtos  WHERE id_usuario = '$id_usuario' ";
@@ -244,7 +222,7 @@ $adm = 0;
       $valor = $dados_user_produtos['valor'];
     }
     ?>
-
+   <div class="d-flex"">
     <div class="d-flex flex-column backgound-div-table">
       <h1 class="display-6 p-5 ">Seus produtos</h1>
       <table class="table">
@@ -281,14 +259,10 @@ $adm = 0;
       </table>
 
     </div>
+    </div>
 
   </section>
 
-
-
-
-  <script src="js/fastclick.js"></script>
-  <script src="js/scroll.js"></script>
   <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
   <script src="js/fixed-responsive-nav.js"></script>
