@@ -33,38 +33,10 @@ $adm = 0;
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/styles.css">
-  <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <link rel="stylesheet" href="css/ie.css">
-    <![endif]-->
-  <script src="js/responsive-nav.js"></script>
 </head>
 
-<body>
-  <!-- 
+<body class="d-flex flex-row justify-content-around gap-4">
 
-  <header>
-    <a href="index.php" class="logo" data-scroll>DELIVERY</a>
-    <nav class="nav-collapse">
-      <ul>
-        <li class="menu-item active"><a href="index.php" data-scroll>VENDAS</a></li>
-        <li class="menu-item"><a href="produtos.php" data-scroll>PRODUTOS</a></li>
-        <li class="menu-item"><a href="pedidos.php" data-scroll>PEDIDOS</a></li>
-        <li class="menu-item"><a href="config.php" data-scroll>CONFIGURAÇÕES</a></li>
-        <?php
-        if ($tipo_cliente == 2) {
-          ?>
-          <li class="menu-item"><a href="admin.php" data-scroll>ADMIN</a></li>
-          <?php
-        }
-        ?>
-        <li class="menu-item"><a href="sair.php" data-scroll>SAIR</a></li>
-
-      </ul>
-    </nav>
-  </header>
-  --->
   <nav class="navbar navbar-dark  fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">PAINEL ADM</a>
@@ -120,18 +92,26 @@ $adm = 0;
   </nav>
 
 
-  <section id="home">
+  <section class="d-flex flex-row justify-content-around gap-4 mt-5 flex-wrap mb-5" id="home">
 
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      nav {
+        background-color: #253a44;
+      }
+
       body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
+        min-height: 100vh;
+        margin-top: 80px;
+        font-family: 'Poppins', sans-serif;
       }
 
       form {
@@ -140,7 +120,7 @@ $adm = 0;
         border-radius: 5px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         max-width: 500px;
-        margin: 0 auto;
+
       }
 
       h1 {
@@ -170,38 +150,82 @@ $adm = 0;
     </style>
     </head>
 
-    <body>
-      <form>
-        <h1>Detalhes da venda</h1>
-        <table>
-          <tr>
-            <td>Produto:</td>
-            <td>Produto A</td>
-          </tr>
-          <tr>
-            <td>Data:</td>
-            <td>01/01/2022</td>
-          </tr>
-          <tr>
-            <td>Hora:</td>
-            <td>14:30</td>
-          </tr>
-          <tr>
-            <td>Valor:</td>
-            <td>R$ 50,00</td>
-          </tr>
-        </table>
-      </form>
-    </body>
+
+    <?php
+
+    $buscar_pedidos = "SELECT * FROM pedidos WHERE sataus_pedido = 'recusado' AND email_painel = '$emails_cliente' ";
+    $resultado_pedidos = mysqli_query($conn, $buscar_pedidos);
+    $result_pedidos = mysqli_num_rows($resultado_pedidos);
+
+    while ($dados_pedidos = mysqli_fetch_array($resultado_pedidos)) {
+      $nome = $dados_pedidos['nome_cliente'];
+      $produto = $dados_pedidos['produto'];
+      $data_hora = $dados_pedidos['data_hora'];
+      $valor = $dados_pedidos['valor'];
+      $telefone = $dados_pedidos['telefone'];
+      $pagamento = $dados_pedidos['forma_pagamento'];
+
+      ?>
+    <div>
+    <form>
+      <h1>Detalhes da venda</h1>
+      <table>
+        <tr>
+          <td>Nome cliente</td>
+          <td>
+            <?php echo $nome; ?>
+          </td>
+        </tr>
+        <tr>
+          <td>Telefone</td>
+          <td>
+            <?php echo $telefone; ?>
+          </td>
+        </tr>
+        <tr>
+          <td>Produto:</td>
+          <td>
+            <?php echo $produto; ?>
+          </td>
+        </tr>
+        <tr>
+          <td>Data:</td>
+          <td>
+            <?php echo $data_brasil = date('d/m/Y', strtotime($data_hora)); ?>
+          </td>
+        </tr>
+        <tr>
+          <td>Hora:</td>
+          <td> <?php echo $data_brasil = date('H:i:s', strtotime($data_hora)); ?></td>
+        </tr>
+        <tr>
+          <td>Valor:</td>
+          <td>
+            <?php echo $valor; ?>
+         
+          </td>
+        </tr>
+        <tr>
+          <td>Pagamento:</td>
+          <td>
+            <?php echo $pagamento; ?>
+          </td>
+        </tr>
+      </table>
+    </form>
+    </div>
+    
+    <?php
+    }
+
+    ?>
+
 
 </html>
 </section>
 
 
 
-<script src="js/fastclick.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/fixed-responsive-nav.js"></script>
 <script src="https://kit.fontawesome.com/a7134b8cde.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

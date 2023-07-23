@@ -163,7 +163,7 @@ $adm = 0;
 
 
   <?php
-  $buscar_pedidos = "SELECT * FROM pedidos WHERE sataus_pedido = 'aguardando' AND email__painel = '$emails_cliente' ";
+  $buscar_pedidos = "SELECT * FROM pedidos WHERE sataus_pedido = 'aguardando' AND email_painel = '$emails_cliente' ";
   $resultado_pedidos = mysqli_query($conn, $buscar_pedidos);
   $result_pedidos = mysqli_num_rows($resultado_pedidos);
   while ($dados_pedido = mysqli_fetch_array($resultado_pedidos)) {
@@ -175,6 +175,7 @@ $adm = 0;
     $endereco = $dados_pedido['endereco'];
     $pagamento = $dados_pedido['forma_pagamento'];
     $telefone = $dados_pedido['telefone'];
+    $data_hora =$dados_pedido['data_hora'];
 
 
     ?>
@@ -203,8 +204,14 @@ $adm = 0;
           <li class="list-group-item">Telefone:
             <?php echo $telefone; ?>
           </li>
+          <li class="list-group-item">Data:
+            <?php echo $data_brasil =date('d/m/y', strtotime($data_hora)) ; ?>
+          </li>
+          <li class="list-group-item">Hora:
+            <?php echo $data_brasil =date('H:i:S', strtotime($data_hora)) ; ?>
+          </li>
         </ul>
-        <div class="card-body ">
+        <div class="card-body gap-2 ">
           <form method="post" action="">
             <input type="hidden" name="id" value="<?php echo $id_pedido;?>">
             <button name="aceitar" class="btn btn-success"  value="aceitar"" formaction="php/aceitar.php">Aceitar
