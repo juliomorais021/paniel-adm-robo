@@ -201,7 +201,7 @@ $adm = 0;
         <tr>
           <td>Valor:</td>
           <td>
-            <?php echo $valor; ?>
+           R$:<?php echo $valor; ?>
          
           </td>
         </tr>
